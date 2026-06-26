@@ -1,457 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ACE Wiki — Armored Combat Extended Reference</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>aughughghhgh ace wiki stuff</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bitcount+Single:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Inconsolata:wght@200..900&display=swap" rel="stylesheet">
 </head>
 <body>
-
-<!-- TOP NAV -->
-<header id="topnav">
-  <div class="logo">ACE <span>// WIKI</span></div>
-  <nav>
-    <a href="#" data-nav="page-home" class="active">Home</a>
-    <a href="#" data-nav="page-guns">Guns</a>
-    <a href="#" data-nav="page-ammo">Ammo</a>
-    <a href="#" data-nav="page-missiles">Missiles</a>
-    <a href="#" data-nav="page-armor">Armor</a>
-    <a href="#" data-nav="page-engines">Engines</a>
-    <a href="#" data-nav="page-ballistics">Ballistics</a>
-  </nav>
-  <div style="position:relative">
-    <input id="search-box" type="search" placeholder="Search guns, ammo, engines…">
-    <div id="search-results" class="search-results"></div>
-  </div>
-</header>
-
-<div id="layout">
-
-<!-- SIDEBAR -->
-<aside id="sidebar">
-  <div class="sidebar-section">
-    <div class="sidebar-label">Overview</div>
-    <a href="#" data-nav="page-home" class="active">Home</a>
-    <a href="#" data-nav="page-ballistics">Ballistics Guide</a>
-  </div>
-  <div class="sidebar-section">
-    <div class="sidebar-label">Weapons</div>
-    <a href="#" data-nav="page-guns">Guns &amp; Cannons</a>
-    <a href="#" data-nav="page-ammo">Ammunition Types</a>
-    <a href="#" data-nav="page-missiles">Missiles</a>
-  </div>
-  <div class="sidebar-section">
-    <div class="sidebar-label">Vehicle Systems</div>
-    <a href="#" data-nav="page-armor">Armor Materials</a>
-    <a href="#" data-nav="page-engines">Engines</a>
-  </div>
-</aside>
-
-<!-- MAIN CONTENT -->
-<main id="content">
-
-<!-- ═══════════════════ HOME ═══════════════════ -->
-<section id="page-home" class="page active">
-  <div id="home-hero">
-    <div class="hero-eyebrow">Garry's Mod · ACF Addon</div>
-    <div class="hero-title">Armored Combat<br><em>Extended</em> — Reference</div>
-    <p class="hero-desc">
-      Specs, formulas, and stats extracted directly from ACE's Lua source. 
-      Covers every gun, ammo type, armor material, engine, and missile — 
-      with the actual ballistics equations the game uses.
-    </p>
-    <div class="hero-cards">
-      <div class="hero-card" data-target="page-guns">
-        <div class="hc-icon">🔫</div>
-        <div class="hc-title">Guns &amp; Cannons</div>
-        <div class="hc-count">60+ weapons across 13 classes</div>
-      </div>
-      <div class="hero-card" data-target="page-ammo">
-        <div class="hc-icon">🧨</div>
-        <div class="hc-title">Ammunition</div>
-        <div class="hc-count">12 round types · AP to APFSDS</div>
-      </div>
-      <div class="hero-card" data-target="page-missiles">
-        <div class="hc-icon">🚀</div>
-        <div class="hc-title">Missiles</div>
-        <div class="hc-count">ATGMs, SAMs, AAMs, GBUs</div>
-      </div>
-      <div class="hero-card" data-target="page-armor">
-        <div class="hc-icon">🛡️</div>
-        <div class="hc-title">Armor Materials</div>
-        <div class="hc-count">9 materials · RHA to ERA</div>
-      </div>
-      <div class="hero-card" data-target="page-engines">
-        <div class="hc-icon">⚙️</div>
-        <div class="hc-title">Engines</div>
-        <div class="hc-count">100+ engines · Petrol to Turbine</div>
-      </div>
-      <div class="hero-card" data-target="page-ballistics">
-        <div class="hc-icon">📐</div>
-        <div class="hc-title">Ballistics</div>
-        <div class="hc-count">Formulas + interactive calculator</div>
-      </div>
+    <div class="topbar">
+        <h1 class="topbar-title">10.8watt's ACE wiki</h1>
+        <h1 class="page-description">DIRECTORY</h1>
     </div>
-  </div>
-
-  <h2>How ACE Works — Quick Overview</h2>
-
-  <p>ACE is a physics-based combat addon. Every shell is a real projectile simulated per-tick with gravity, drag, and collision detection. Penetration is computed from kinetic energy at impact, not from a fixed stat.</p>
-
-  <div class="stat-grid">
-    <div class="stat-card"><div class="label">Gun Classes</div><div class="value">13</div><div class="unit">distinct weapon types</div></div>
-    <div class="stat-card"><div class="label">Ammo Types</div><div class="value">12+</div><div class="unit">AP · HE · HEAT · APFSDS…</div></div>
-    <div class="stat-card"><div class="label">Armor Materials</div><div class="value">9</div><div class="unit">RHA · ERA · DU · Ceramic…</div></div>
-    <div class="stat-card"><div class="label">Engine Types</div><div class="value">100+</div><div class="unit">petrol · diesel · turbine…</div></div>
-    <div class="stat-card"><div class="label">Velocity Scale</div><div class="value">0.0254</div><div class="unit">game units → m/s</div></div>
-    <div class="stat-card"><div class="label">KE → RHA</div><div class="value">0.04</div><div class="unit">conversion constant</div></div>
-  </div>
-
-  <h2>Key Concepts</h2>
-  <h3>Penetration is Calculated, Not Fixed</h3>
-  <p>ACE doesn't use a stat sheet. When a round hits armour, the game computes penetration from the shell's kinetic energy at that moment, its mass, and the penetration area modifier. A heavier, faster shell penetrates more. At range, drag reduces velocity, reducing penetration.</p>
-  <h3>Line of Sight vs Nominal Armour</h3>
-  <p>Hitting armour at an angle increases effective thickness. A 100 mm plate hit at 60° presents ~200 mm of line-of-sight (LOS) armour. Each material has its own effectiveness multiplier on top of that.</p>
-  <h3>Ductility</h3>
-  <p>Each armour plate has a ductility setting (−1 to 1). Positive ductility reduces damage taken. Negative ductility (brittle) increases damage but also spall resistance trade-offs. Ceramic uses negative ductility to shatter effectively against kinetic rounds.</p>
-</section>
-
-<!-- ═══════════════════ GUNS ═══════════════════ -->
-<section id="page-guns" class="page">
-  <h1>Guns &amp; Cannons</h1>
-  <p class="page-subtitle">All gun entities available in ACE. Sort any column. Filter by class or name.</p>
-
-  <div class="filter-bar">
-    <label>Search:</label>
-    <input id="gun-filter-name" type="text" placeholder="Name…" style="width:180px">
-    <label>Class:</label>
-    <select id="gun-filter-class">
-      <option value="">All Classes</option>
-      <option value="C">C — Cannon</option>
-      <option value="SC">SC — Short Cannon</option>
-      <option value="SBC">SBC — Smoothbore</option>
-      <option value="AL">AL — Autoloader</option>
-      <option value="AC">AC — Autocannon</option>
-      <option value="RAC">RAC — Rotary Autocannon</option>
-      <option value="HMG">HMG — Heavy Machinegun</option>
-      <option value="MG">MG — Machinegun</option>
-      <option value="HW">HW — Howitzer</option>
-      <option value="MO">MO — Mortar</option>
-      <option value="ATR">ATR — Anti-Tank Rifle</option>
-      <option value="SA">SA — Semiauto Cannon</option>
-    </select>
-  </div>
-
-  <div class="table-wrap">
-    <table id="gun-table">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Class</th>
-          <th>Caliber ↕</th>
-          <th>Weight ↕</th>
-          <th>Max ROF ↕</th>
-          <th>Max Shell Len ↕</th>
-          <th>Max Propellant ↕</th>
-          <th>Year ↕</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
-  </div>
-
-  <h2>Gun Class Descriptions</h2>
-  <div id="gun-class-cards" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px;margin-top:12px">
-  </div>
-</section>
-
-<!-- ═══════════════════ AMMO ═══════════════════ -->
-<section id="page-ammo" class="page">
-  <h1>Ammunition Types</h1>
-  <p class="page-subtitle">Each round type has distinct physics, damage, and compatibility. Stats shown are the formulas and constants used by the game.</p>
-  <div id="round-grid" class="round-grid"></div>
-</section>
-
-<!-- ═══════════════════ MISSILES ═══════════════════ -->
-<section id="page-missiles" class="page">
-  <h1>Missiles &amp; Guided Weapons</h1>
-  <p class="page-subtitle">Guided munitions in ACE. Missiles are full entities with their own physics, guidance, and warheads.</p>
-  <div class="table-wrap">
-    <table id="missile-table">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Class</th>
-          <th>Guidance</th>
-          <th>Top Speed ↕</th>
-          <th>Weight ↕</th>
-          <th>Caliber ↕</th>
-          <th>Max KE Pen ↕</th>
-          <th>Thrust ↕</th>
-          <th>Drag Coef ↕</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
-  </div>
-
-  <h2>Guidance Systems</h2>
-  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px;margin-top:12px">
-    <div class="armor-card">
-      <h3>Wire-Guided (MCLOS/SACLOS)</h3>
-      <p style="font-size:12px;color:var(--muted)">Missile is connected to the launcher by a thin wire. Operator guides it manually or semi-automatically. Vulnerable to interference and requires line of sight throughout flight.</p>
+    <div class="midarea">
+        <a href="equations.html" class="midarea-entry-link">
+            <div class="midarea-entry-div">
+                
+                <p class="midarea-entry-text"><img src="https://icons.iconarchive.com/icons/famfamfam/silk/16/sum-icon.png" width="16" height="16" class="midarea-entry-icon">ACE Equations</p>
+            </div>
+        </a>
+        <a href="codesamples.html" class="midarea-entry-link">
+            <div class="midarea-entry-div">
+                
+                <p class="midarea-entry-text"><img src="https://icons.iconarchive.com/icons/famfamfam/silk/16/text-align-center-icon.png" width="16" height="16" class="midarea-entry-icon">ACE Code Samples</p>
+            </div>
+        </a>
+        <a href="missiles.html" class="midarea-entry-link">
+            <div class="midarea-entry-div">
+                
+                <p class="midarea-entry-text"><img src="https://icons.iconarchive.com/icons/famfamfam/silk/16/error-icon.png" width="16" height="16" class="midarea-entry-icon">ACE Missiles</p>
+            </div>
+        </a>
+        <a href="guidance.html" class="midarea-entry-link">
+            <div class="midarea-entry-div">
+                
+                <p class="midarea-entry-text"><img src="https://icons.iconarchive.com/icons/famfamfam/silk/16/bullet-wrench-icon.png" width="16" height="16" class="midarea-entry-icon">ACE Guidance</p>
+            </div>
+        </a>
+        <a href="guns.html" class="midarea-entry-link">
+            <div class="midarea-entry-div">
+                
+                <p class="midarea-entry-text"><img src="https://icons.iconarchive.com/icons/famfamfam/silk/16/anchor-icon.png" width="16" height="16" class="midarea-entry-icon">ACE Guns</p>
+            </div>
+        </a>
+        <a href="engines.html" class="midarea-entry-link">
+            <div class="midarea-entry-div">
+                
+                <p class="midarea-entry-text"><img src="https://icons.iconarchive.com/icons/famfamfam/silk/16/car-icon.png" width="16" height="16" class="midarea-entry-icon">ACE Engines</p>
+            </div>
+        </a>
     </div>
-    <div class="armor-card">
-      <h3>Infrared Seeker (IR)</h3>
-      <p style="font-size:12px;color:var(--muted)">Locks onto heat sources. Must acquire lock before or after launch. Susceptible to flares and IR jamming. Most common on AAMs and MANPADs.</p>
-    </div>
-    <div class="armor-card">
-      <h3>Laser Guidance</h3>
-      <p style="font-size:12px;color:var(--muted)">Follows a laser spot painted on the target. Very accurate but requires continuous laser designation throughout the missile's flight.</p>
-    </div>
-    <div class="armor-card">
-      <h3>Radar Homing</h3>
-      <p style="font-size:12px;color:var(--muted)">Homes in on radar emissions. Used by anti-radiation missiles (ARM). Cannot be spoofed by flares.</p>
-    </div>
-    <div class="armor-card">
-      <h3>GPS</h3>
-      <p style="font-size:12px;color:var(--muted)">Navigates to a fixed coordinate. Used on guided bombs (GBU). Fire-and-forget but cannot track moving targets.</p>
-    </div>
-    <div class="armor-card">
-      <h3>Inertial / Dumb</h3>
-      <p style="font-size:12px;color:var(--muted)">No guidance after launch. Travels in a straight line. No countermeasure vulnerability.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════ ARMOR ═══════════════════ -->
-<section id="page-armor" class="page">
-  <h1>Armor Materials</h1>
-  <p class="page-subtitle">Each material has unique properties for KE, HEAT, spall, and weight. Effectiveness multiplies the LOS armour value.</p>
-
-  <div class="formula-box">
-    <div class="formula-name">Penetration Probability (RHA formula)</div>
-    <div class="formula">penProb = clamp( 1 / (1 + exp(-43.94 × (maxPen / losArmor / eff - 1))), 0.0015, 0.9985 )</div>
-    <div class="formula-note">Logistic curve. At pen/armour = 1.0 → ~50% chance. Below 0.5 → near 0%. Above 1.5 → near 100%.</div>
-  </div>
-
-  <div class="formula-box">
-    <div class="formula-name">Breach (Overmatch) Probability</div>
-    <div class="formula">breachProb = clamp( (caliber / armor / eff - 1.3) / 5.7, 0, 1 )</div>
-    <div class="formula-note">When the caliber is ≥ 1.3× the effective armour thickness, there's a chance to punch clean through (overmatch). At 7× — guaranteed breach.</div>
-  </div>
-
-  <div id="armor-grid" class="armor-grid"></div>
-
-  <h2>ERA — Special Rules</h2>
-  <p>ERA (Explosive Reactive Armor) behaves differently from passive armour. When struck by a round that meets the sensor threshold, it detonates:</p>
-  <div class="stat-grid">
-    <div class="stat-card"><div class="label">KE Effectiveness</div><div class="value">3×</div><div class="unit">vs AP/APHE/APDS</div></div>
-    <div class="stat-card"><div class="label">HEAT Effectiveness</div><div class="value">10×</div><div class="unit">vs HEAT/THEAT/HEATFS</div></div>
-    <div class="stat-card"><div class="label">Mass Modifier</div><div class="value">2×</div><div class="unit">twice the weight of RHA per mm</div></div>
-    <div class="stat-card"><div class="label">AP Sensor</div><div class="value">÷ 4</div><div class="unit">minimum pen to trigger ERA</div></div>
-  </div>
-</section>
-
-<!-- ═══════════════════ ENGINES ═══════════════════ -->
-<section id="page-engines" class="page">
-  <h1>Engines</h1>
-  <p class="page-subtitle">All ACE engine entities. Power (kW) is calculated from torque × limit RPM. Sort any column.</p>
-
-  <div class="filter-bar">
-    <label>Search:</label>
-    <input id="eng-filter-name" type="text" placeholder="Name…" style="width:180px">
-    <label>Fuel:</label>
-    <select id="eng-filter-fuel">
-      <option value="">All Fuels</option>
-      <option value="Petrol">Petrol</option>
-      <option value="Diesel">Diesel</option>
-      <option value="Multifuel">Multifuel</option>
-      <option value="Electric">Electric</option>
-    </select>
-  </div>
-
-  <div class="table-wrap">
-    <table id="engine-table">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Fuel</th>
-          <th>Weight ↕</th>
-          <th>Torque ↕</th>
-          <th>Est. Power ↕</th>
-          <th>Idle RPM ↕</th>
-          <th>Limit RPM ↕</th>
-          <th>ACE Points ↕</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
-  </div>
-
-  <h2>Engine Types</h2>
-  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px;margin-top:12px">
-    <div class="armor-card">
-      <h3 style="color:var(--accent)">Petrol (GenericPetrol)</h3>
-      <p style="font-size:12px;color:var(--muted)">Gasoline engine. Highest power density per kg, highest RPM range. Burns petrol fuel only. Common in light vehicles and aircraft.</p>
-    </div>
-    <div class="armor-card">
-      <h3 style="color:var(--accent2)">Diesel (GenericDiesel)</h3>
-      <p style="font-size:12px;color:var(--muted)">Diesel/Multifuel engine. Lower RPM ceiling, higher torque at low RPM. Fuel-efficient. Standard tank powerplant.</p>
-    </div>
-    <div class="armor-card">
-      <h3 style="color:#9d9">Electric</h3>
-      <p style="font-size:12px;color:var(--muted)">Electric motor. Peak torque from zero RPM. Very high RPM ceiling. Requires battery capacity. Silent running option.</p>
-    </div>
-    <div class="armor-card">
-      <h3 style="color:#dd8">Gas Turbine</h3>
-      <p style="font-size:12px;color:var(--muted)">Turbine engine. Extremely high power output. Multifuel. High idle RPM. Spool-up delay. Excellent power-to-weight ratio.</p>
-    </div>
-    <div class="armor-card">
-      <h3 style="color:#c88">Radial</h3>
-      <p style="font-size:12px;color:var(--muted)">Aircraft-derived radial engine. High power density, petrol only. Used in WWII-era heavy vehicles and aircraft.</p>
-    </div>
-    <div class="armor-card">
-      <h3 style="color:#88c">Wankel (Rotary)</h3>
-      <p style="font-size:12px;color:var(--muted)">Rotary piston engine. Very high RPM, compact, lightweight. Lower torque but very smooth power delivery.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════ BALLISTICS ═══════════════════ -->
-<section id="page-ballistics" class="page">
-  <h1>Ballistics &amp; Formulas</h1>
-  <p class="page-subtitle">The actual formulas from ACE's source code — plus an interactive calculator.</p>
-
-  <h2>Muzzle Velocity</h2>
-  <div class="formula-box">
-    <div class="formula-name">ACF_MuzzleVelocity( PropMass, ProjMass )</div>
-    <div class="formula">PEnergy  = PBase × ((1 + PropMass)^PScale − 1)
-Speed    = (PEnergy × 2000 / ProjMass)^MVScale
-MuzzleVel = Speed  [in m/s]</div>
-    <div class="formula-note">PBase = 4,000,000 · PScale = 0.6 · MVScale = 0.5<br>PropMass and ProjMass are in kilograms. More propellant = faster. Heavier shell = slower.<br>This is approximate — the game uses this simplified internal ballistic model.</div>
-  </div>
-
-  <h2>Kinetic Energy &amp; Penetration</h2>
-  <div class="formula-box">
-    <div class="formula-name">ACF_Kinetic( Speed, Mass, LimitVel )</div>
-    <div class="formula">KE          = (Mass × Speed²) / 2000              [kJ]
-Momentum    = Speed × Mass
-fullKE      = (Mass × Speed^1.8) / 2000 + Momentum
-
-overspeed   = max(Speed − LimitVel, 0)
-Penetration = max(fullKE − (overspeed² / LimitVel×5) × (fullKE/200)^0.95, fullKE × 0.1)</div>
-    <div class="formula-note">Speed is in m/s (converted from game units via ÷ 39.37). LimitVel is the optimal penetration speed — AP uses 750 m/s, HE uses 100 m/s. Above LimitVel, efficiency drops.</div>
-  </div>
-
-  <div class="formula-box">
-    <div class="formula-name">Max Penetration (mm RHAe)</div>
-    <div class="formula">FrArea   = π × (Caliber / 2)²         [cm²]
-PenArea  = FrArea^0.6
-MaxPen   = (Penetration / PenArea) × KEtoRHA
-
-KEtoRHA  = 0.04  [conversion constant]</div>
-    <div class="formula-note">PenArea uses a 0.6 exponent — larger calibres have proportionally larger impact area but don't scale linearly. KEtoRHA = 0.04 converts the internal energy unit to millimetres of RHA.</div>
-  </div>
-
-  <h2>Drag (In-Flight Velocity Loss)</h2>
-  <div class="formula-box">
-    <div class="formula-name">Per-Tick Drag</div>
-    <div class="formula">FlightSpeed = Bullet.Flight:Length()          [game units/s]
-Drag        = (DragCoef × FlightSpeed²) / DragDiv
-Flight      = Flight − Drag × direction × DeltaTime
-
-DragDiv     = 8000
-DragCoef    = (FrArea / 10000) / ProjMass       [AP/HE formula]</div>
-    <div class="formula-note">Drag is computed every game tick. Heavier shells lose less speed per tick. Larger cross-section (bigger calibre) = more drag. DragCoef is set per round-type and per shell configuration.</div>
-  </div>
-
-  <h2>HE Blast</h2>
-  <div class="formula-box">
-    <div class="formula-name">HE Explosion Parameters</div>
-    <div class="formula">BlastRadius = FillerMass^0.33 × 8          [metres]
-BlastEnergy = FillerMass × HEPower            [kJ]  (HEPower = 3000)
-MaxBlastPen = FillerMass × HEPower / HEBlastPenetration
-
-Fragments   = floor((FillerMass / FragMass) × 500)
-FragVel     = sqrt(FillerMass × 3000000 / FragMass / Fragments)</div>
-    <div class="formula-note">FillerMass is in kg. BlastRadius follows a cube-root scaling. More filler = bigger blast, but weight rises fast. Fragment count and velocity both depend on filler-to-casing ratio.</div>
-  </div>
-
-  <h2>Ricochet</h2>
-  <div class="formula-box">
-    <div class="formula-name">Ricochet Probability</div>
-    <div class="formula">RicoAngle = min(BaseRico − ((Speed − 800) / 39.37 / 5), 89)
-
-None  = RicoAngle − 10  → 0% chance
-Mean  = RicoAngle       → 50% chance
-Max   = RicoAngle + 10  → 100% chance
-
-AP BaseRico = 53°  |  HE = 70°  |  APFSDS = 30°</div>
-    <div class="formula-note">Higher-velocity shells ricochet at smaller angles. AP rounds ricochet more easily than HE. APFSDS punches through at almost any angle.</div>
-  </div>
-
-  <hr>
-  <h2>Interactive Calculator</h2>
-  <p>Estimate muzzle velocity, downrange velocity, and penetration for a custom round.</p>
-
-  <form id="ballistics-form" onsubmit="return false" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:600px;margin:16px 0">
-    <div>
-      <label style="font-size:11px;color:var(--muted);display:block;margin-bottom:4px">Propellant Mass (kg)</label>
-      <input id="bc-prop" type="number" step="0.1" value="5" style="width:100%;background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:6px 10px;border-radius:3px;font-size:13px">
-    </div>
-    <div>
-      <label style="font-size:11px;color:var(--muted);display:block;margin-bottom:4px">Projectile Mass (kg)</label>
-      <input id="bc-proj" type="number" step="0.1" value="7" style="width:100%;background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:6px 10px;border-radius:3px;font-size:13px">
-    </div>
-    <div>
-      <label style="font-size:11px;color:var(--muted);display:block;margin-bottom:4px">Caliber (mm)</label>
-      <input id="bc-cal" type="number" step="1" value="100" style="width:100%;background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:6px 10px;border-radius:3px;font-size:13px">
-    </div>
-    <div>
-      <label style="font-size:11px;color:var(--muted);display:block;margin-bottom:4px">Drag Coefficient</label>
-      <input id="bc-drag" type="number" step="0.0001" value="0.001" style="width:100%;background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:6px 10px;border-radius:3px;font-size:13px">
-    </div>
-    <div>
-      <label style="font-size:11px;color:var(--muted);display:block;margin-bottom:4px">Range (metres)</label>
-      <input id="bc-range" type="number" step="10" value="500" style="width:100%;background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:6px 10px;border-radius:3px;font-size:13px">
-    </div>
-    <div>
-      <label style="font-size:11px;color:var(--muted);display:block;margin-bottom:4px">Limit Velocity (m/s)</label>
-      <input id="bc-limitvel" type="number" step="10" value="750" style="width:100%;background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:6px 10px;border-radius:3px;font-size:13px">
-    </div>
-  </form>
-
-  <div class="stat-grid" style="max-width:600px">
-    <div class="stat-card"><div class="label">Muzzle Velocity</div><div class="value" id="bc-out-mv">—</div><div class="unit">at muzzle</div></div>
-    <div class="stat-card"><div class="label">Velocity @ Range</div><div class="value" id="bc-out-vel">—</div><div class="unit">downrange estimate</div></div>
-    <div class="stat-card"><div class="label">Kinetic Energy</div><div class="value" id="bc-out-ke">—</div><div class="unit">at target range</div></div>
-    <div class="stat-card"><div class="label">Est. Penetration</div><div class="value" id="bc-out-pen">—</div><div class="unit">mm RHAe at range</div></div>
-  </div>
-
-  <p style="margin-top:12px;font-size:11px;color:var(--muted)">Note: Range velocity uses the Pejsa approximation referenced in ACE's source. In-game results may differ slightly due to tick-rate and per-step drag accumulation.</p>
-</section>
-
-</main>
-</div><!-- end #layout -->
-
-<script src="assets/js/data.js"></script>
-<script src="assets/js/app.js"></script>
-<script>
-// Build gun class cards on page
-document.addEventListener('DOMContentLoaded', () => {
-  const container = document.getElementById('gun-class-cards');
-  if (!container) return;
-  Object.entries(ACE.gunClasses).forEach(([id, info]) => {
-    const div = document.createElement('div');
-    div.className = 'armor-card';
-    div.innerHTML = `<div class="armor-id">${id}</div><h3>${info.name}</h3><p style="font-size:12px;color:var(--muted)">${info.desc}</p>`;
-    container.appendChild(div);
-  });
-});
-</script>
 </body>
 </html>

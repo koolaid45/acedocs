@@ -1,0 +1,90 @@
+body {
+    background-color: #2b2b2b;
+}
+.topbar {
+    background-color: #1a1a1a;
+    padding: 10px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    border-bottom: 1px solid #444;
+    height: 60px;
+    z-index: 1000;
+}
+.midarea {
+    background-color: #1a1a1a;
+    color: #ffffff;
+    padding: 10px;
+    width: 1080px;
+    left: 50%;
+    position:relative;
+    transform: translateX(-50%);
+    top: 90px;
+    height: 1400px;
+    border-top: 1px solid #444;
+}
+.topbar-title {
+    font-family: "Bitcount Single", system-ui;
+    font-size: 24px;
+    font-weight: bold;
+    color: #c76a00;
+    text-decoration: none;
+}
+.page-description {
+    font-family: "Bitcount Single", system-ui;
+    font-weight:400;
+    font-size: 72px;
+    color: #4b4b4b;
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%, -90%);
+    top: 30px;
+}
+.midarea-entry-link {
+    text-decoration: none;
+}
+.midarea-entry-div {
+    position: relative;
+    background-color: #1a1a1a;
+    border-bottom: 1px solid #444;
+    height: 10px;
+    text-decoration: none;
+}
+.midarea-entry-text {
+    text-decoration: none;
+    font-family: "Bitcount Single", system-ui;
+    color: #ffffff;
+    transform: translateY(-80%);
+}
+.midarea-entry-icon {
+    float: left;
+    transform: translateY(0%);
+    margin-right: 10px;
+}
+h2 {
+    font-family: "Bitcount Single", system-ui;
+    font-weight: 400;
+    font-size: 24px;
+    color: #744500;
+    border-left: 2px solid #3b3b3b;
+    padding-left: 10px;
+}
+h1 {
+    font-family: "Bitcount Single", system-ui;
+    font-weight: 800;
+    font-size: 32px;
+    color: #965a00;
+}
+p {
+    font-family: "Courier Prime", monospace;
+    font-weight: 400;
+    font-size: 16px;
+    color: #ffffff;
+    background-color: #222222;
+    border: 1px solid #444;
+    padding-left: 2px;
+}
+a {
+    text-decoration: none;
+}
