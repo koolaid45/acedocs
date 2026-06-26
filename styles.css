@@ -21,7 +21,7 @@ body {
     position:relative;
     transform: translateX(-50%);
     top: 90px;
-    height: 1400px;
+    min-height: 1100px;
     border-top: 1px solid #444;
 }
 .topbar-title {

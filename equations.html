@@ -22,7 +22,7 @@
             Speed    = (PEnergy × 2000 / ProjMass)^0.5<br>
             MuzzleVel = Speed  [in m/s]
         </p>
-        <hr class="border-white" style="margin:auto;">
+        <hr>
         <h1>Kinetic Energy and penetration</h1>
         <h2>ACF_KineticEnergy( Mass, Velocity )</h2>
         <p>KE          = (Mass × Speed²) / 2000              [kJ]<br>
@@ -39,7 +39,7 @@
             <br>
             KEtoRHA  = 0.04  [conversion constant]
         </p>
-        <hr class="border-white" style="margin:auto;">
+        <hr>
         <h1>Drag (In-Flight Velocity Loss)</h1>
         <h2>Per-Tick Drag</h2>
         <p>FlightSpeed = Bullet.Flight:Length()          [game units/s]<br>
@@ -49,7 +49,7 @@
             DragDiv     = 8000<br>
             DragCoef    = (FrArea / 10000) / ProjMass       [AP/HE formula]
         </p>
-        <hr class="border-white" style="margin:auto;">
+        <hr>
         <h1>HE Blast</h1>
         <h2>HE Explosion Parameters</h2>
         <p>BlastRadius = FillerMass^0.33 × 8          [metres]<br>
@@ -59,7 +59,7 @@
             Fragments   = floor((FillerMass / FragMass) × 500)<br>
             FragVel     = sqrt(FillerMass × 3000000 / FragMass / Fragments)
         </p>
-        <hr class="border-white" style="margin:auto;">
+        <hr>
         <h1>Ricochet</h1>
         <h2>Ricochet Chance</h2>
         <p>RicoAngle = min(BaseRico − ((Speed − 800) / 39.37 / 5), 89)<br>
