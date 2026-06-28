@@ -1,111 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>aughughghhgh ace wiki stuff</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bitcount+Single:wght@100..900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Inconsolata:wght@200..900&display=swap" rel="stylesheet">
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>aughughghhgh ace wiki stuff</title>
+   <link rel="stylesheet" href="styles.css">
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Bitcount+Single:wght@100..900&display=swap" rel="stylesheet">
+   <link
+      href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Inconsolata:wght@200..900&display=swap"
+      rel="stylesheet">
 </head>
+
 <body>
-    <div class="topbar">
-        <a href="index.html"><h1  class="topbar-title">10.8watt's ACE wiki</h1></a>
-        <h1 class="page-description">GUIDANCE</h1>
-    </div>
-    <div class="midarea">
-        <h1>Guidance Overview</h1>
-        <h2>Guidance Types</h2>
-        <p>Guidance packages determine how missiles and torpedoes steer. Some use direct launcher control, others lock onto targets, and some follow a fixed position.</p>
-        <hr>
-        <h1>Dumb</h1>
-        <h2>No guidance</h2>
-        <p>This guidance package is empty and provides no control.</p>
-        <hr>
-        <h1>Wire</h1>
-        <h2>Launcher-controlled guidance</h2>
-        <p>Launcher reads a target position and steers the munition towards it.<br>
-           WireLength = (500 × 39.37)²  [≈ 500 m limit]<br>
-           If missile distance from launcher exceeds the wire length, the wire snaps and TargetPos is cleared.</p>
-        <hr>
-        <h1>Laser</h1>
-        <h2>Line-of-sight guided</h2>
-        <p>Uses launcher target position and steers the round toward that point.<br>
-           Requires a clear line of sight and the target must remain inside the viewcone.<br>
-           Default ViewCone = 30°.</p>
-        <hr>
-        <h1>GPS</h1>
-        <h2>Single-point guidance</h2>
-        <p>Receives a one-time target position and guides to it regardless of line of sight.<br>
-           Once a position is acquired, guidance keeps that single location until it is reached.<br>
-           If the missile becomes jammed, TargetPos is cleared.</p>
-        <hr>
-        <h1>GPS Terrain-Avoidant</h1>
-        <h2>Low-level GPS guidance</h2>
-        <p>Like GPS guidance, but stays as low as possible while moving toward the target.<br>
-           Uses terrain tracing to climb over obstacles and smooth height changes.</p>
-        <hr>
-        <h1>Beam Riding</h1>
-        <h2>Beam-aligned guidance</h2>
-        <p>Keeps the missile in line with a sighting beam or optical system so it effectively rides the beam.<br>
-           This results in fast travel time and direct flight toward the beam direction.<br>
-           Default ViewCone = 30°.</p>
-        <hr>
-        <h1>Radar</h1>
-        <h2>Active radar homing</h2>
-        <p>Detects targets in front of the missile and guides toward them.<br>
-           Default SeekCone = 20°, ViewCone = 70°.<br>
-           Uses doppler-style filtering and ground clutter checks to confirm valid radar targets.<br>
-           Minimum target distance = 10 m.</p>
-        <hr>
-        <h1>Infrared</h1>
-        <h2>Heat-seeking guidance</h2>
-        <p>Detects hot targets in front of the missile and follows them.<br>
-           Default SeekCone = 6°, ViewCone = 70°.<br>
-           Requires target heat > ambient heat by a threshold.<br>
-           Min distance = 200 units, Max distance ≈ 20,000 units.<br>
-           Leads moving targets by estimating target velocity and time-to-impact.</p>
-        <hr>
-        <h1>Top Attack IR</h1>
-        <h2>High-angle heat-seeking guidance</h2>
-        <p>Similar to infrared guidance, but optimized for top-attack trajectories.<br>
-           SeekCone = 2°, ViewCone = 180°.<br>
-           Adds an altitude offset to target position when the missile is far from its target.</p>
-        <hr>
-        <h1>Anti-Radiation</h1>
-        <h2>Radar emission homing</h2>
-        <p>Detects active radar sources and guides the missile toward them.<br>
-           Default ViewCone = 25°.<br>
-           Rejects jammed or inactive emitters and requires an active radar signal.</p>
-        <hr>
-        <h1>Semi-active</h1>
-        <h2>Radar-guided via external trackers</h2>
-        <p>Guides the missile toward targets acquired by friendly radar emitters.<br>
-           Uses radar-tracked targets from allied radars rather than seeking independently.<br>
-           Default SeekCone = 20°, ViewCone = 70°.</p>
-        <hr>
-        <h1>Anti-missile</h1>
-        <h2>Missile-intercept guidance</h2>
-        <p>Detects and intercepts missile targets ahead of itself.<br>
-           Targets detected in the forward cone are tracked and led using target velocity prediction.<br>
-           Retains lock only while the target stays within the viewcone.</p>
-        <hr>
-        <h1>Straight Running</h1>
-        <h2>Torpedo gyroscopic guidance</h2>
-        <p>Guides torpedoes to the depth and direction of the target position or the direction fired.<br>
-           Uses a single target position or forward heading to establish torpedo path.</p>
-        <hr>
-        <h1>Acoustic Straight</h1>
-        <h2>Acoustic torpedo guidance</h2>
-        <p>Uses underwater acoustic guidance to search for targets and steer toward them.<br>
-           Combines a search pattern with depth control; target position can specify search depth only.</p>
-        <hr>
-        <h1>Acoustic Helical</h1>
-        <h2>Helical acoustic search guidance</h2>
-        <p>Searches in a spiral pattern until the target depth is found.<br>
-           Useful for airdropped torpedoes or underwater search patterns where the target position only sets depth.</p>
-    </div>
+   <div class="topbar">
+      <a href="/">
+         <h1 class="topbar-title">10.8watt's ACE wiki</h1>
+      </a>
+      <h1 class="page-description">GUIDANCE</h1>
+   </div>
+   <div class="midarea">
+      <a href="/" class="midarea-entry-link">
+         <div class="midarea-entry-div">
+
+            <p class="midarea-entry-text"><img
+                  src="https://icons.iconarchive.com/icons/famfamfam/silk/16/arrow-up-icon.png" width="16" height="16"
+                  class="midarea-entry-icon">Main Page</p>
+         </div>
+      </a>
+      <h1>Guidance Overview</h1>
+      <h2>Guidance Types</h2>
+      <p>Guidance packages determine how missiles and torpedoes steer. Some use direct launcher control, others lock
+         onto targets, and some follow a fixed position.</p>
+      <hr>
+      <h1>Dumb</h1>
+      <h2>No guidance</h2>
+      <p>This guidance package is empty and provides no control.</p>
+      <hr>
+      <h1>Wire</h1>
+      <h2>Launcher-controlled guidance</h2>
+      <p>Launcher reads a target position and steers the munition towards it.<br>
+         WireLength = (500 × 39.37)² [≈ 500 m limit]<br>
+         If missile distance from launcher exceeds the wire length, the wire snaps and TargetPos is cleared.</p>
+      <hr>
+      <h1>Laser</h1>
+      <h2>Line-of-sight guided</h2>
+      <p>Uses launcher target position and steers the round toward that point.<br>
+         Requires a clear line of sight and the target must remain inside the viewcone.<br>
+         Default ViewCone = 30°.</p>
+      <hr>
+      <h1>GPS</h1>
+      <h2>Single-point guidance</h2>
+      <p>Receives a one-time target position and guides to it regardless of line of sight.<br>
+         Once a position is acquired, guidance keeps that single location until it is reached.<br>
+         If the missile becomes jammed, TargetPos is cleared.</p>
+      <hr>
+      <h1>GPS Terrain-Avoidant</h1>
+      <h2>Low-level GPS guidance</h2>
+      <p>Like GPS guidance, but stays as low as possible while moving toward the target.<br>
+         Uses terrain tracing to climb over obstacles and smooth height changes.</p>
+      <hr>
+      <h1>Beam Riding</h1>
+      <h2>Beam-aligned guidance</h2>
+      <p>Keeps the missile in line with a sighting beam or optical system so it effectively rides the beam.<br>
+         This results in fast travel time and direct flight toward the beam direction.<br>
+         Default ViewCone = 30°.</p>
+      <hr>
+      <h1>Radar</h1>
+      <h2>Active radar homing</h2>
+      <p>Detects targets in front of the missile and guides toward them.<br>
+         Default SeekCone = 20°, ViewCone = 70°.<br>
+         Uses doppler-style filtering and ground clutter checks to confirm valid radar targets.<br>
+         Minimum target distance = 10 m.</p>
+      <hr>
+      <h1>Infrared</h1>
+      <h2>Heat-seeking guidance</h2>
+      <p>Detects hot targets in front of the missile and follows them.<br>
+         Default SeekCone = 6°, ViewCone = 70°.<br>
+         Requires target heat > ambient heat by a threshold.<br>
+         Min distance = 200 units, Max distance ≈ 20,000 units.<br>
+         Leads moving targets by estimating target velocity and time-to-impact.</p>
+      <hr>
+      <h1>Top Attack IR</h1>
+      <h2>High-angle heat-seeking guidance</h2>
+      <p>Similar to infrared guidance, but optimized for top-attack trajectories.<br>
+         SeekCone = 2°, ViewCone = 180°.<br>
+         Adds an altitude offset to target position when the missile is far from its target.</p>
+      <hr>
+      <h1>Anti-Radiation</h1>
+      <h2>Radar emission homing</h2>
+      <p>Detects active radar sources and guides the missile toward them.<br>
+         Default ViewCone = 25°.<br>
+         Rejects jammed or inactive emitters and requires an active radar signal.</p>
+      <hr>
+      <h1>Semi-active</h1>
+      <h2>Radar-guided via external trackers</h2>
+      <p>Guides the missile toward targets acquired by friendly radar emitters.<br>
+         Uses radar-tracked targets from allied radars rather than seeking independently.<br>
+         Default SeekCone = 20°, ViewCone = 70°.</p>
+      <hr>
+      <h1>Anti-missile</h1>
+      <h2>Missile-intercept guidance</h2>
+      <p>Detects and intercepts missile targets ahead of itself.<br>
+         Targets detected in the forward cone are tracked and led using target velocity prediction.<br>
+         Retains lock only while the target stays within the viewcone.</p>
+      <hr>
+      <h1>Straight Running</h1>
+      <h2>Torpedo gyroscopic guidance</h2>
+      <p>Guides torpedoes to the depth and direction of the target position or the direction fired.<br>
+         Uses a single target position or forward heading to establish torpedo path.</p>
+      <hr>
+      <h1>Acoustic Straight</h1>
+      <h2>Acoustic torpedo guidance</h2>
+      <p>Uses underwater acoustic guidance to search for targets and steer toward them.<br>
+         Combines a search pattern with depth control; target position can specify search depth only.</p>
+      <hr>
+      <h1>Acoustic Helical</h1>
+      <h2>Helical acoustic search guidance</h2>
+      <p>Searches in a spiral pattern until the target depth is found.<br>
+         Useful for airdropped torpedoes or underwater search patterns where the target position only sets depth.</p>
+   </div>
 </body>
+
 </html>

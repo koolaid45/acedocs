@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,68 +9,82 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bitcount+Single:wght@100..900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Inconsolata:wght@200..900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Inconsolata:wght@200..900&display=swap"
+        rel="stylesheet">
 </head>
+
 <body>
     <div class="topbar">
-        <a href="index.html"><h1  class="topbar-title">10.8watt's ACE wiki</h1></a>
+        <a href="/">
+            <h1 class="topbar-title">10.8watt's ACE wiki</h1>
+        </a>
         <h1 class="page-description">EQUATIONS</h1>
     </div>
     <div class="midarea">
+        <a href="/" class="midarea-entry-link">
+            <div class="midarea-entry-div">
+
+                <p class="midarea-entry-text"><img
+                        src="https://icons.iconarchive.com/icons/famfamfam/silk/16/arrow-up-icon.png" width="16"
+                        height="16" class="midarea-entry-icon">Main Page</p>
+            </div>
+        </a>
         <h1>Muzzle Velocity</h1>
         <h2>ACF_MuzzleVelocity( PropMass, ProjMass )</h2>
-        <p>PEnergy  = 40000000 × ((1 + PropMass)^0.6 − 1)<br>
-            Speed    = (PEnergy × 2000 / ProjMass)^0.5<br>
-            MuzzleVel = Speed  [in m/s]
+        <p>PEnergy = 40000000 × ((1 + PropMass)^0.6 − 1)<br>
+            Speed = (PEnergy × 2000 / ProjMass)^0.5<br>
+            MuzzleVel = Speed [in m/s]
         </p>
         <hr>
         <h1>Kinetic Energy and penetration</h1>
         <h2>ACF_KineticEnergy( Mass, Velocity )</h2>
-        <p>KE          = (Mass × Speed²) / 2000              [kJ]<br>
-            Momentum    = Speed × Mass<br>
-            fullKE      = (Mass × Speed^1.8) / 2000 + Momentum<br>
+        <p>KE = (Mass × Speed²) / 2000 [kJ]<br>
+            Momentum = Speed × Mass<br>
+            fullKE = (Mass × Speed^1.8) / 2000 + Momentum<br>
             <br>
-            overspeed   = max(Speed − LimitVel, 0)<br>
+            overspeed = max(Speed − LimitVel, 0)<br>
             Penetration = max(fullKE − (overspeed² / LimitVel×5) × (fullKE/200)^0.95, fullKE × 0.1)<br>
         </p>
         <h2>Max Penetration (mm RHAe)</h2>
-        <p>FrArea   = π × (Caliber / 2)²         [cm²]<br>
-            PenArea  = FrArea^0.6<br>
-            MaxPen   = (Penetration / PenArea) × KEtoRHA<br>
+        <p>FrArea = π × (Caliber / 2)² [cm²]<br>
+            PenArea = FrArea^0.6<br>
+            MaxPen = (Penetration / PenArea) × KEtoRHA<br>
             <br>
-            KEtoRHA  = 0.04  [conversion constant]
+            KEtoRHA = 0.04 [conversion constant]
         </p>
         <hr>
         <h1>Drag (In-Flight Velocity Loss)</h1>
         <h2>Per-Tick Drag</h2>
-        <p>FlightSpeed = Bullet.Flight:Length()          [game units/s]<br>
-            Drag        = (DragCoef × FlightSpeed²) / DragDiv<br>
-            Flight      = Flight − Drag × direction × DeltaTime<br>
+        <p>FlightSpeed = Bullet.Flight:Length() [game units/s]<br>
+            Drag = (DragCoef × FlightSpeed²) / DragDiv<br>
+            Flight = Flight − Drag × direction × DeltaTime<br>
             <br>
-            DragDiv     = 8000<br>
-            DragCoef    = (FrArea / 10000) / ProjMass       [AP/HE formula]
+            DragDiv = 8000<br>
+            DragCoef = (FrArea / 10000) / ProjMass [AP/HE formula]
         </p>
         <hr>
         <h1>HE Blast</h1>
         <h2>HE Explosion Parameters</h2>
-        <p>BlastRadius = FillerMass^0.33 × 8          [metres]<br>
-            BlastEnergy = FillerMass × HEPower            [kJ]  (HEPower = 3000)<br>
+        <p>BlastRadius = FillerMass^0.33 × 8 [metres]<br>
+            BlastEnergy = FillerMass × HEPower [kJ] (HEPower = 3000)<br>
             MaxBlastPen = FillerMass × HEPower / HEBlastPenetration<br>
             <br>
-            Fragments   = floor((FillerMass / FragMass) × 500)<br>
-            FragVel     = sqrt(FillerMass × 3000000 / FragMass / Fragments)
+            Fragments = floor((FillerMass / FragMass) × 500)<br>
+            FragVel = sqrt(FillerMass × 3000000 / FragMass / Fragments)
         </p>
         <hr>
         <h1>Ricochet</h1>
         <h2>Ricochet Chance</h2>
         <p>RicoAngle = min(BaseRico − ((Speed − 800) / 39.37 / 5), 89)<br>
             <br>
-            None  = RicoAngle − 10  → 0% chance<br>
-            Mean  = RicoAngle       → 50% chance<br>
-            Max   = RicoAngle + 10  → 100% chance<br>
+            None = RicoAngle − 10 → 0% chance<br>
+            Mean = RicoAngle → 50% chance<br>
+            Max = RicoAngle + 10 → 100% chance<br>
             <br>
-            AP BaseRico = 53°  |  HE = 70°  |  APFSDS = 30°
+            AP BaseRico = 53° | HE = 70° | APFSDS = 30°
         </p>
     </div>
 </body>
+
 </html>

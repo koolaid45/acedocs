@@ -1,54 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>aughughghhgh ace wiki stuff</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bitcount+Single:wght@100..900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Inconsolata:wght@200..900&display=swap" rel="stylesheet">
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>aughughghhgh ace wiki stuff</title>
+   <link rel="stylesheet" href="styles.css">
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Bitcount+Single:wght@100..900&display=swap" rel="stylesheet">
+   <link
+      href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Inconsolata:wght@200..900&display=swap"
+      rel="stylesheet">
 </head>
+
 <body>
-    <div class="topbar">
-        <a href="index.html"><h1  class="topbar-title">10.8watt's ACE wiki</h1></a>
-        <h1 class="page-description">ARMOR</h1>
-    </div>
-    <div class="midarea">
-        <h1>Armor Calculations</h1>
-        <h2>Armor Thickness from Mass</h2>
-        <p>ACF_CalcArmor(Area, Ductility, Mass) = (Mass × 1000 / Area / 0.78) / sqrt(1 + Ductility) × ACF.ArmorMod</p>
-        <p>This converts entity mass into an equivalent armor thickness in millimeters for ACF damage resolution.</p>
-        <h2>Line-of-sight Armor</h2>
-        <p>losArmor = armor / |cos(Angle) ^ ACF.SlopeEffectFactor|<br>
-           losArmorHealth = armor^1.1 × (3 + min(1 / |cos(Angle) ^ ACF.SlopeEffectFactor|, 2.8) × 0.5)</p>
-        <h2>Penetration and Caliber</h2>
-        <p>maxPenetration = (Energy.Penetration / FrArea) × ACF.KEtoRHA<br>
-           caliber = 20 × sqrt(FrArea^(1 / ACF.PenAreaMod) / π)</p>
-        <h2>Probability Formulas</h2>
-        <p>penProb = clamp(1 / (1 + exp(-43.9445 × (maxPenetration / losArmor / effectiveness - 1))), 0.0015, 0.9985)<br>
-           breachProb = clamp((caliber / armor / effectiveness - 1.3) / 5.7, 0, 1)</p>
-        <h2>Damage Resolution</h2>
-        <p>If breach occurs and penetration exceeds armor:<br>
-           Damage = FrArea × resiliance × damageMult × ductilitymult<br>
-           Overkill = maxPenetration − armor<br>
-           Loss = armor / maxPenetration</p>
-        <p>If penetration occurs without a clean breach:<br>
-           Penetration = min(maxPenetration, losArmor × effectiveness)<br>
-           Damage = (Penetration / losArmorHealth / effectiveness)^2 × FrArea × resiliance × damageMult × ductilitymult</p>
-        <p>If no penetration occurs:<br>
-           Penetration = min(maxPenetration, losArmor × effectiveness)<br>
-           Damage = (Penetration / losArmorHealth / effectiveness) × FrArea × resiliance × damageMult × ductilitymult</p>
-        <h2>Material Properties</h2>
-        <p>Armor materials modify effectiveness and damage resistance.<br>
-           RHA: effectiveness = 1, resiliance = 1<br>
-           Titanium: effectiveness = 1.7, resiliance = 0.75<br>
-           Higher effectiveness increases effective armor, while lower resiliance reduces damage taken.</p>
-        <h2>Ductility Influence</h2>
-        <p>ductilitymult = 2 / (2 + ductilityvalue × 1.5), where ductilityvalue = (Entity.ACF.Ductility or 0) × 1.25.<br>
-           Higher ductility reduces damage from hits.</p>
-        <hr>
-    </div>
+   <div class="topbar">
+      <a href="/">
+         <h1 class="topbar-title">10.8watt's ACE wiki</h1>
+      </a>
+      <h1 class="page-description">ARMOR</h1>
+   </div>
+   <div class="midarea">
+      <a href="/" class="midarea-entry-link">
+         <div class="midarea-entry-div">
+
+            <p class="midarea-entry-text"><img
+                  src="https://icons.iconarchive.com/icons/famfamfam/silk/16/arrow-up-icon.png" width="16" height="16"
+                  class="midarea-entry-icon">Main Page</p>
+         </div>
+      </a>
+      <a href="armortypes.html" class="midarea-entry-link">
+         <div class="midarea-entry-div">
+
+            <p class="midarea-entry-text"><img
+                  src="https://icons.iconarchive.com/icons/famfamfam/silk/16/anchor-icon.png" width="16" height="16"
+                  class="midarea-entry-icon">Armor Types</p>
+         </div>
+      </a>
+
+
+      <h1>Armor Calculations</h1>
+      <h2>Armor Thickness from Mass</h2>
+      <p>ACF_CalcArmor(Area, Ductility, Mass) = (Mass × 1000 / Area / 0.78) / sqrt(1 + Ductility) × ACF.ArmorMod</p>
+      <p>This converts entity mass into an equivalent armor thickness in millimeters for ACF damage resolution.</p>
+      <h2>Line-of-sight Armor</h2>
+      <p>losArmor = armor / |cos(Angle) ^ ACF.SlopeEffectFactor|<br>
+         losArmorHealth = armor^1.1 × (3 + min(1 / |cos(Angle) ^ ACF.SlopeEffectFactor|, 2.8) × 0.5)</p>
+      <h2>Penetration and Caliber</h2>
+      <p>maxPenetration = (Energy.Penetration / FrArea) × ACF.KEtoRHA<br>
+         caliber = 20 × sqrt(FrArea^(1 / ACF.PenAreaMod) / π)</p>
+      <h2>Probability Formulas</h2>
+      <p>penProb = clamp(1 / (1 + exp(-43.9445 × (maxPenetration / losArmor / effectiveness - 1))), 0.0015, 0.9985)<br>
+         breachProb = clamp((caliber / armor / effectiveness - 1.3) / 5.7, 0, 1)</p>
+      <h2>Damage Resolution</h2>
+      <p>If breach occurs and penetration exceeds armor:<br>
+         Damage = FrArea × resiliance × damageMult × ductilitymult<br>
+         Overkill = maxPenetration − armor<br>
+         Loss = armor / maxPenetration</p>
+      <p>If penetration occurs without a clean breach:<br>
+         Penetration = min(maxPenetration, losArmor × effectiveness)<br>
+         Damage = (Penetration / losArmorHealth / effectiveness)^2 × FrArea × resiliance × damageMult × ductilitymult
+      </p>
+      <p>If no penetration occurs:<br>
+         Penetration = min(maxPenetration, losArmor × effectiveness)<br>
+         Damage = (Penetration / losArmorHealth / effectiveness) × FrArea × resiliance × damageMult × ductilitymult</p>
+      <h2>Material Properties</h2>
+      <p>Armor materials modify effectiveness and damage resistance.<br>
+         RHA: effectiveness = 1, resiliance = 1<br>
+         Titanium: effectiveness = 1.7, resiliance = 0.75<br>
+         Higher effectiveness increases effective armor, while lower resiliance reduces damage taken.</p>
+      <h2>Ductility Influence</h2>
+      <p>ductilitymult = 2 / (2 + ductilityvalue × 1.5), where ductilityvalue = (Entity.ACF.Ductility or 0) × 1.25.<br>
+         Higher ductility reduces damage from hits.</p>
+      <hr>
+   </div>
 </body>
+
 </html>
